@@ -1,0 +1,47 @@
+/* CSS declarations go here */
+body{
+	background-color: #82ABA1;
+
+}
+.navbar-default!{
+	background-color: :#994df0;
+}
+
+.bg-success {
+	background-color: transparent;
+}
+
+.user_avatar{
+	min-height:100px;
+	text-align: center;
+	display:block;
+	margin-left:auto;
+	margin-right: auto;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: :10px;
+	padding-bottom: 10px;
+}
+
+.avatar_img{
+	height:75px;
+	width:75px;
+	border-radius: 50%;
+
+}
+
+.chat-img{
+	height:50px;
+	width:50px;
+	padding:3px;
+	border-radius: 50%;;
+}
+
+#message{
+	vertical-align: middle;
+	font-size: 1.5e
+}
+
+.well.well-lg{
+	border: 1px solid black;
+}

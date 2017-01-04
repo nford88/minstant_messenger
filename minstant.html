@@ -1,0 +1,118 @@
+<head>
+  <title>minstant</title>
+</head>
+
+<body>
+</body>
+
+<!-- this is the main template used by iron:router to build the page -->
+<template name="ApplicationLayout">
+	{{> yield "header"}}
+	
+	<div class="container">
+	{{> yield "main"}}
+	</div>
+</template>
+
+<!-- top level template for the nav bar -->
+<template name="navbar">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="/">Minstant</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">{{> loginButtons}}</a></li>
+            </ul>
+      </div>
+    </div>
+</nav>
+</template>
+
+<!-- Top level template for the lobby page -->
+<template name="lobby_page">
+	{{> available_user_list}}
+</template>
+
+<!-- display a list of users -->
+<template name="available_user_list">
+	<h2>Choose someone to chat with:</h2>
+	<div class="row">
+	{{#each users}}
+	{{> available_user}}
+	{{/each}}
+</div>
+</template>
+
+<!-- display an individual user -->
+<!-- display an individual user -->
+<template name="available_user">
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="user_avatar">
+			{{#if isMyUser _id}}
+			<div class="bg-success">{{getUsername _id}} (YOU)
+				<br/>
+				<img src="/{{profile.avatar}}" class="avatar_img">
+			</div>
+			{{else}}
+			<a href="/chat/{{_id}}">
+				{{getUsername _id}}
+				<br/>
+				<img src="/{{profile.avatar}}" class="avatar_img">
+			</a>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+
+<!-- Top level template for the chat page -->
+<template name="chat_page">
+	<h2>Go on. Have a chat!</h2>
+	<h5>Send an emoji? It works using the same unicode characters. Just enter :D, :S, :P , ;) etc to send them in your message!</h5>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="well well-lg">
+			{{#each messages}}
+				{{#emoji}}
+				{{> chat_message}}
+				{{/emoji}}
+			{{/each}}
+			</div>	
+		</div>
+	</div>
+	  
+	<form role="form" class="js-send-chat">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="input-group input-group-lg">
+              <input type="text" class="form-control" name="chat" placeholder="type a message here..." />
+            <div class="input-group-btn">
+              <button class="btn" >Send</button>
+            </div><!-- /btn-group -->
+          </div><!-- /input-group -->
+        </div><!-- /.col-xs-12 -->
+      </div><!-- /.row -->
+    </form>
+</template>
+
+<!-- simple template that displays a message -->
+<template name="chat_message">
+  <div class="row">
+    <div class="col-xs-2">
+        <img src="/{{avatar}}" alt="user" class="chat-img"/>{{username}}
+    </div>
+    <div class="col-xs-10">
+      {{text}}
+    </div>
+  <br/>
+</div>
+</template>
+
+
+
