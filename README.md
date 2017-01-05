@@ -1,1 +1,3 @@
 # minstant_messenger
+
+-Z
