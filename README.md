@@ -1,4 +1,4 @@
-# Minstant IM Web App
+# Minstant
 
 --------------------------
 
